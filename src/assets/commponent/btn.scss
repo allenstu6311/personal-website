@@ -1,0 +1,59 @@
+@mixin button_1($width:150px) {
+    width: $width;
+    text-align: center;
+    border-radius: 100px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 800;
+    background-color: $btnColor;
+    color: white;
+    border: none;
+    letter-spacing: 3px;
+    cursor: pointer;
+    &:hover{//&是連結父層
+        background-color: $btnColor;
+        color:white;
+        transform: translateY(-3px);
+        box-shadow: 2px 4px 0px black;
+        transition: all 0.3s 
+}
+    &:active{
+        transform: translateY(-3px) scale(.97);
+        box-shadow: 1px 2px 0px black;
+        transition: all 0.1s 
+  }
+}
+
+@mixin button_2($width:150px) {
+    width: $width;
+    text-align: center;
+    border-radius: 100px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 800;
+    background-color: white;
+    color: black;
+    letter-spacing: 3px;
+    cursor: pointer;
+    &:hover{//&是連結父層
+        background-color: $btnColor;
+        color:white;
+        transform: translateY(-3px);
+        box-shadow: 2px 4px 0px black;
+        transition: all 0.3s 
+}
+    &:active{
+        transform: translateY(-3px) scale(.97);
+        box-shadow: 1px 2px 0px black;
+        transition: all 0.1s 
+  }
+}
+
+@mixin url($width:50px,$size:18px){
+    display: block;
+    text-decoration: none;
+    font-size: $size;
+    font-weight: 800;
+}
+

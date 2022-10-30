@@ -1,0 +1,43 @@
+$mainColor: #f4ede7;
+$secondColor: #e6dace;
+$btnColor: rgba(62, 62, 247, 0.658);
+$hoverColor: #0050ff;
+// :root{
+//     --main-color:#f4ede7;
+//     --second-color: #e6dace;
+//     --btn-color: rgba(62, 62, 247, 0.658);
+//     --hover-color: #0050ff;
+
+// }
+// $mainColor: var(--main-color,red );
+// $secondColor: var(--second-color,red);
+// $btnColor: var(--btn-color,red);
+// $hoverColor: var(--hover-color,red);
+
+
+
+// @mixin changeColor($judge) {
+//     @if($judge=='dark'){
+//         :root{
+//             --main-color:red;
+//             --second-color: red;
+//             --btn-color: red;
+//             --hover-color:red;
+        
+//         }
+
+//     }@else{
+    //    :root{
+    //         --main-color:#f4ede7;
+    //         --second-color: #e6dace;
+    //         --btn-color: rgba(62, 62, 247, 0.658);
+    //         --hover-color: #0050ff;
+        
+    //    }
+//     }  
+  
+// }
+
+ 
+  
+
