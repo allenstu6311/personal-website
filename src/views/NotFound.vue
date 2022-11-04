@@ -22,7 +22,7 @@ export default {
       onUpdate: function () {
         tal.innerHTML = Math.ceil(counter.var);
       },
-      ease: Circ.easeOut,
+      // ease: Circ.easeOut,
     });
   },
 };
