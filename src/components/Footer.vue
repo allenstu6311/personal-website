@@ -1,5 +1,5 @@
 <template>
-    <div class="footer-container">
+    <div class="footer-container" :class="{cardColor:count}">
         <div class="footer-copyright">
             <p>©2023by allen write</p>
         </div>
@@ -25,7 +25,15 @@
 </template>
 <style lang="scss">
 @import"../assets/style.scss";
-
+.cardColor{
+    p{
+        color: white !important;
+    }
+    small{
+        color: white !important;
+    }   
+    
+}
 .footer-container{
     width: 100%;
     display: flex;
@@ -180,8 +188,11 @@
 }
 }
 </style>
-<script>
-export default {
-    
-}
+<script setup>
+import{computed}from"vue"
+import { useStore } from "vuex";
+const store = useStore();
+const count = computed(() => {
+  return store.state.viewsColor;
+});
 </script>

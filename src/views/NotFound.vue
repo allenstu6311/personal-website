@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper"  :class="{bgColor:count}">
     <div class="container">
       <div id="tal">
         <h1>0</h1>
@@ -8,7 +8,16 @@
     </div>
   </div>
 </template>
+<script setup>
+import{computed}from"vue"
+import { useStore } from "vuex";
+const store = useStore();
+const count = computed(() => {
+  return store.state.viewsColor;
+});
+</script>
 <script>
+
 // import { gsap } from "gsap";
 import { TweenMax, to, Circ } from "gsap";
 // gsap.registerPlugin(ScrollTrigger);
@@ -22,7 +31,7 @@ export default {
       onUpdate: function () {
         tal.innerHTML = Math.ceil(counter.var);
       },
-      // ease: Circ.easeOut,
+      ease: Circ.easeOut,
     });
   },
 };

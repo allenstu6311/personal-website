@@ -1,6 +1,5 @@
 <template>
   <div class="switch-container">
-    <input type="checkbox" id="chengeColor">
     <div class="switch-btn" @click="changePosition"
     :style="{ top: 20*index+'%',transition:0.4+'s'}"
     :class="{changeLocation:changeState == true}">
@@ -11,18 +10,27 @@
   <!-- <div class="night-view" v-show="changeState == true"></div> -->
 </template>
 <script setup>
-import{ref}from"vue";
+import{computed, ref}from"vue";
+import { useStore } from "vuex";
+const store = useStore();
 const changeState = ref(false)
 const index = ref(1)
 const changePosition = ()=>{
   changeState.value = !changeState.value
   if(!changeState.value){
     index.value-=0.3
+    store.commit('changeViewsColor',0)
+ 
   }else{
     index.value+=0.3
+    store.commit('changeViewsColor',1)
   }
-  
+ 
 }
+const count = computed(()=>{
+    return store.state.viewsColor
+  })
+
 
 </script>
 <style lang="scss">

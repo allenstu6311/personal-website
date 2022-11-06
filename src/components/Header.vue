@@ -1,21 +1,22 @@
 <template>
-  <header>
+  <header :class="{bgColor:count}">
     <div class="header-title">
       <div class="title-squire"></div>
-      <h2>Allen Project <small>/{{pageName}}</small></h2>
+      <h2>Allen Project <small   :class="{fontColor:count}">/{{pageName}}</small></h2>
     </div>
     <transition name="headerShow" v-show="isShow">
-      <nav>
+      <nav :class="{bgColor:count}">
       <div class="header-url">
         <router-link v-for="item in pageRoutes" 
       :key="item" 
       :to="item.path"
       @click="isShow=false"
+      :class="{fontColor:count}"
       >{{ item.name}}</router-link> 
       </div>
     </nav>
     </transition>
-    <div class="header-control" @click="headerShow">
+    <div class="header-control" @click="headerShow" :class="{bgColor:count}">
       <div class="header-control-line" :class="{rotate_1:isShow}"></div>
       <div class="header-control-line" :class="{rotate_2:isShow}"></div>
     </div>
@@ -24,6 +25,26 @@
 
 <style lang="scss" scoped>
 @import"../assets/style.scss";
+.bgColor{
+    background-color: $nightSecondColor !important;
+    nav{
+    .header-url{
+      a{
+       &:before{
+        content: "";
+        width: 0px;
+        height: 3px;
+        background-color: $otherColor;
+        position: absolute;
+        bottom:-10px ;
+       }
+      }
+    }
+  }
+  .header-control-line{
+    background-color: white !important;
+  }
+  }
 header{
   width: 100%;
   background-color: white;
@@ -31,7 +52,7 @@ header{
   justify-content: space-between;
   position: fixed;
   top:0;
-  z-index: 10;
+  z-index: 100;
   .header-title{
     display: flex;
     align-items: center;
@@ -130,6 +151,11 @@ header{
 import {routes} from"@/router/index.js"
 import {useRoute}from "vue-router"
 import{computed,ref,onMounted,watch,reactive} from 'vue'
+import { useStore } from "vuex";
+const store = useStore();
+const count = computed(() => {
+  return store.state.viewsColor;
+});
 
 const pageRoutes = computed(()=>{
         const route = routes.filter(item=>item.name!=='404')

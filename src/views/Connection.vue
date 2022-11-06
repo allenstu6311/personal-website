@@ -1,8 +1,8 @@
 <template>
-<div class="back-color"></div>
+<div class="back-color" :class="{bgColor:count}"></div>
 <div class="page-title">
   <div class="title-squire"></div>
-  <h1>聯絡我</h1>
+  <h1  :class="{fontColor:count}">聯絡我</h1>
 </div>
     <div class="email-container col-4">
     
@@ -33,11 +33,19 @@
             v-model="post"
             name="post"
             > -->
-          <input type="submit" value="送出">
+          <input type="submit" value="送出" :class="{btnColor:count}">
         </form>
     </div>
 </template>
+<script setup>
+import{computed,ref}from"vue"
+import { useStore } from "vuex";
+const store = useStore();
+const count = computed(() => {
+  return store.state.viewsColor;
+});
 
+</script>
 <script>
 import emailjs from '@emailjs/browser'; 
 export default {

@@ -1,23 +1,37 @@
 <template>
-  <section id="timeline">
+  <section id="timeline" :class="{bgColor:count}">
     <div class="page-title">
       <div class="title-squire"></div>
-      <h1>關於我</h1>
+      <h1 :class="{fontColor:count}">關於我</h1>
     </div>
-   
     <div class="demo-card-wrapper">
       <div class="demo-card demo-card--step1">
         <div class="head">
           <div class="number-box">
             <span>01</span>
           </div>
-          <h2>高中時期</h2>
+          <h2>學生時期</h2>
         </div>
         <div class="body">
-          <p>
-           
-          </p>
-          <img src="https://picsum.photos/300/150/?random=10">
+          <p></p>
+          <div class="demo-picBox">
+            <button @click="prev(1)">＜</button>
+            <transition-group name="slider" class="slider-pic">
+              <div
+                id="demo-pic"
+                v-for="item in student"
+                :key="item"
+                :style="{ left: 425 * -1 + 'px' }"
+              >
+                <img
+                  :src="require(`../assets/image/${item.img}`)"
+                  alt=""
+                  class="img"
+                />
+              </div>
+            </transition-group>
+            <button @click="next(1)">＞</button>
+          </div>
         </div>
       </div>
 
@@ -26,13 +40,28 @@
           <div class="number-box">
             <span>02</span>
           </div>
-          <h2>大學時期</h2>
+          <h2>教練時期</h2>
         </div>
         <div class="body">
-          <p>
-          
-          </p>
-          <img src="http://placehold.it/1000x500" alt="Graphic" />
+          <p></p>
+          <div class="demo-picBox">
+            <button @click="prev(2)">＜</button>
+            <transition-group name="slider" class="slider-pic">
+              <div
+                id="demo-pic"
+                v-for="item in coach"
+                :key="item"
+                :style="{ left: 425 * -1 + 'px' }"
+              >
+                <img
+                  :src="require(`../assets/image/${item.img}`)"
+                  alt=""
+                  class="img"
+                />
+              </div>
+            </transition-group>
+            <button @click="next(2)">＞</button>
+          </div>
         </div>
       </div>
 
@@ -41,13 +70,28 @@
           <div class="number-box">
             <span>03</span>
           </div>
-          <h2>教練時期</h2>
+          <h2>緯育時期</h2>
         </div>
         <div class="body">
-          <p>
-     
-          </p>
-          <img src="http://placehold.it/1000x500" alt="Graphic" />
+          <p></p>
+          <div class="demo-picBox">
+            <button @click="prev(3)">＜</button>
+            <transition-group name="slider" class="slider-pic">
+              <div
+                id="demo-pic"
+                v-for="item in tibame"
+                :key="item"
+                :style="{ left: 425 * -1 + 'px' }"
+              >
+                <img
+                  :src="require(`../assets/image/${item.img}`)"
+                  alt=""
+                  class="img"
+                />
+              </div>
+            </transition-group>
+            <button @click="next(3)">＞</button>
+          </div>
         </div>
       </div>
 
@@ -56,37 +100,28 @@
           <div class="number-box">
             <span>04</span>
           </div>
-          <h2>緯育時期</h2>
-        </div>
-        <div class="body">
-          <p>
-            
-          </p>
-          <img src="http://placehold.it/1000x500" alt="Graphic" />
-        </div>
-      </div>
-
-      <div class="demo-card demo-card--step5">
-        <div class="head">
-          <div class="number-box">
-            <span>05</span>
-          </div>
           <h2>現在</h2>
         </div>
         <div class="body">
-          <p>
-           
-          </p>
-          <img src="http://placehold.it/1000x500" alt="Graphic" />
+          <p></p>
+          <div class="demo-picBox">
+            <div id="demo-pic" style=" opacity: 1;">
+              <img
+                :src="require(`../assets/image/me.jpg`)"
+                alt=""
+                class="img"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 @import "../assets/style.scss";
+
 .page-title {
   display: flex;
   align-items: center;
@@ -211,12 +246,7 @@ body {
   background: $background;
   border-top: $border;
   border-bottom: $border;
-//   h1 {
-//     text-align: center;
-//     font-size: 3rem;
-//     font-weight: 200;
-//     margin-bottom: 20px;
-//   }
+
   p.leader {
     text-align: center;
     max-width: 90%;
@@ -230,7 +260,7 @@ body {
       display: flex;
       flex-flow: column wrap;
       width: $container-width;
-      height: $container-height;
+      height: 1200px;
       margin: 0 auto;
     }
     &::after {
@@ -251,7 +281,8 @@ body {
     display: block;
     margin: 10px auto 80px;
     max-width: 94%;
-    z-index: 2;
+    z-index: 10;
+
     @include mq-sm {
       max-width: 60%;
       box-shadow: $box-shadow;
@@ -341,6 +372,68 @@ body {
       @include mq-lg {
         height: $body-height;
       }
+      .demo-picBox {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 10;
+        // &:last-of-type {
+        //   #demo-pic {
+        //     &:last-of-type {
+        //       opacity: 1;
+        //     }
+        //   }
+        // }
+
+        button {
+          border-radius: 50%;
+          position: absolute;
+          border: none;
+          padding: 5px;
+          font-size: 18px;
+          text-align: center;
+          font-weight: 800;
+          background-color: skyblue;
+          color: white;
+        }
+        button:first-child {
+          z-index: 10;
+        }
+        button:last-child {
+          right: 0;
+          z-index: 10;
+        }
+        .slider-pic {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #demo-pic {
+          width: 400px;
+          height: 250px;
+          display: flex;
+          flex-shrink: 0;
+          position: relative;
+          z-index: 5;
+          &:first-of-type {
+            z-index: -1;
+          }
+          &:last-of-type {
+            opacity: 0;
+          }
+
+          .img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 1;
+            position: relative;
+          }
+        }
+      }
+
       p {
         font-size: 14px;
         line-height: 18px;
@@ -362,7 +455,93 @@ body {
     }
   }
 }
+.slider-move {
+  z-index: -1;
+  transition: all 1s;
+}
+@media screen  and (min-width: 1024px)  {
+  #demo-pic {
+    width: 101% !important;
+  }
+}
 </style>
 
-<script>
+<script setup>
+import { ref, computed, reactive } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+const count = computed(() => {
+  return store.state.viewsColor;
+});
+const clickBtn = ref(true);
+
+
+const setTime = () => {
+  setTimeout(() => {
+    clickBtn.value = true;
+  }, 1000);
+};
+const prev = (num) => {
+  if (clickBtn.value == false) {
+   return
+  }
+    switch (num) {
+      case 1:
+        const studentLast = student.pop();
+        student.unshift(studentLast);
+        break;
+      case 2:
+        const coachLast = coach.pop();
+        coach.unshift(coachLast);
+        break;
+      case 3:
+        const tibameLast = tibame.pop();
+        tibame.unshift(tibameLast);
+        break;
+    
+  }
+
+  clickBtn.value=false
+  setTime();
+};
+const next = (num) => {
+  if (clickBtn.value == false) {
+   return
+  }
+  switch (num) {
+    case 1:
+      const studentfirst = student.shift();
+      student.push(studentfirst);
+      break;
+    case 2:
+      const coachfirst = coach.shift();
+      coach.push(coachfirst);
+      break;
+    case 3:
+      const tibamefirst = tibame.shift();
+      tibame.push(tibamefirst);
+      break;
+  }
+  clickBtn.value=false
+  setTime();
+};
+
+const student = reactive([
+  { img: "student_01.jpg" },
+  { img: "student_02.jpg" },
+  { img: "student_03.jpg" },
+  { img: "student_04.jpg" },
+]);
+const coach = reactive([
+  { img: "coach_01.jpg" },
+  { img: "coach_02.jpg" },
+  { img: "coach_03.jpg" },
+  { img: "coach_04.jpg" },
+]);
+const tibame = reactive([
+  { img: "tibame_1.jpg" },
+  { img: "tibame_2.jpg" },
+  { img: "tibame_3.jpg" },
+  { img: "tibame_4.jpg" },
+]);
 </script>

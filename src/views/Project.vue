@@ -2,17 +2,19 @@
     <transition name="back-light-box">
         <div class="light-box" v-show="focus_project" ></div>   
     </transition>
-    <div class="back-color"></div>
+    <div class="back-color" :class="{bgColor:count}"></div>
     <div class="page-title">
     <div class="title-squire"></div>
-        <h1>專案經歷</h1>
+        <h1 :class="{fontColor:count}">專案經歷</h1>
     </div>
 
     <div class="project-container">
         <div class="project-url">
-            <p>以下是我的作品連結</p>
+            <p :class="{fontColor:count}">以下是我的作品連結</p>
         </div>
-        <div class="project-list col-6" v-for="(item,index) in project" :key="item" :class="{show_project:index==project_index}" @mouseover="enlarge(index)" @mouseout="zoomOut">
+        <div class="project-list col-6" v-for="(item,index) in project" :key="item" :class="{show_project:index==project_index}" @mouseover="enlarge(index)" @mouseout="zoomOut"
+        
+        >
             <a :href="item.url" >
                 <div class="project-text">
                     <div class="project-name"  @mouseenter="enlarge(index)" @mouseout="zoomOut">
@@ -32,7 +34,12 @@
 
 </template>
 <script setup>
-import{ref,reactive} from"vue"
+import{ref,reactive,computed} from"vue"
+import { useStore } from "vuex";
+const store = useStore();
+const count = computed(() => {
+  return store.state.viewsColor;
+});
 const focus_project = ref(false);
 const project_index = ref(-1)
 const enlarge = (index)=>{

@@ -1,7 +1,7 @@
 <template>
-  <div class="home-wrap" >
-    <div class="home-container" >
-      <div class="home-name-card" >
+  <div class="home-wrap" :class="{ bgColor: count }">
+    <div class="home-container">
+      <div class="home-name-card" :class="{ cardColor: count }">
         <div class="card-pic">
           <img src="../assets/image/headpic.jpg" />
         </div>
@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div class="home-introduce">
+    <div class="home-introduce" :class="{ introduceColor: count }">
       <h1>HELLO</h1>
       <div class="card-btn_2">
         <router-link to="/about">
@@ -56,11 +56,15 @@
       >
     </div>
   </div>
-
 </template>
 <script setup>
-import{ref}from "vue"
-  const show = ref(true);
+import { ref, computed, watch } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+const count = computed(() => {
+  return store.state.viewsColor;
+});
+const show = ref(true);
 </script>
 <style lang="scss" scoped>
 @import "../assets/style.scss";
@@ -68,13 +72,29 @@ import{ref}from "vue"
 * {
   box-sizing: border-box;
 }
+.bgColor {
+  background: linear-gradient(90deg, $nightMainColor 40%, transparent 0%)
+    left/100% !important;
+  background-color: $otherColor !important;
+}
 
-.changeColor{
+.introduceColor {
+  background-color: $otherColor !important;
+  p {
+    color: white;
+  }
+  .card-about {
+    background-color: $nightMainColor !important;
+  }
+  .card-project {
+    background-color: $nightMainColor !important;
+  }
+}
 
- background-color: black !important;
+.changeColor {
+  background-color: black !important;
 
- background: linear-gradient(90deg, red 40%, transparent 0%)
-left/100% !important;
+  background: linear-gradient(90deg, red 40%, transparent 0%) left/100% !important;
 }
 
 .home-wrap {
