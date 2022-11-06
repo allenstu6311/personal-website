@@ -13,7 +13,7 @@
           <h2>學生時期</h2>
         </div>
         <div class="body">
-          <p></p>
+          <p>我從高中開始打棒球，從那時開始為了成為一名職棒運動員不斷努力，過程中因為起步太晚經歷了非常多的挫折，雖然最後失敗了，但也因此培養出了絕不輕言放棄的精神。</p>
           <div class="demo-picBox">
             <button @click="prev(1)">＜</button>
             <transition-group name="slider" class="slider-pic">
@@ -43,7 +43,7 @@
           <h2>教練時期</h2>
         </div>
         <div class="body">
-          <p></p>
+          <p>畢業後因為本身是運動員的關係，對於訓練較為熟悉，因此選擇了教練這個職業，那時覺得自己在這個領域應該相對較為優勢，畢竟自己以前也是這樣不斷訓練過來的，所以選擇教練成為我人生的第一份正式工作。</p>
           <div class="demo-picBox">
             <button @click="prev(2)">＜</button>
             <transition-group name="slider" class="slider-pic">
@@ -73,7 +73,9 @@
           <h2>緯育時期</h2>
         </div>
         <div class="body">
-          <p></p>
+          <p>
+            在教練工作的這幾年中，深深感受到了教練這份工作的一些問題，例:不穩定，進修費過高等等問題一一浮現，尤其疫情一來收入都非常的慘，這時在隔離中的我接觸到了程式，那時感覺真的是發現了另一個世外桃源，覺得非常感興趣，因此辭掉了工作，來到緯育學習！
+          </p>
           <div class="demo-picBox">
             <button @click="prev(3)">＜</button>
             <transition-group name="slider" class="slider-pic">
@@ -103,7 +105,9 @@
           <h2>現在</h2>
         </div>
         <div class="body">
-          <p></p>
+          <p>
+            很快的四個月的時間一下就過了，在這個期間做了兩個個人專題及一個團專，每一次經歷專題後都學到非常多，我從沒想過過去那個總是坐不住的自己竟然會變成工程師，將來我也會抱著運動員不放棄的精神在資訊業闖出一片天!
+          </p>
           <div class="demo-picBox">
             <div id="demo-pic" style=" opacity: 1;">
               <img
@@ -172,7 +176,7 @@ $rows: ceil($items/2);
 
 /* Card sizing */
 
-$card-height: 400px;
+$card-height: 500px;
 $card-width: 450px;
 $inner-margin: 15px;
 $number-size: 35px;
@@ -260,7 +264,7 @@ body {
       display: flex;
       flex-flow: column wrap;
       width: $container-width;
-      height: 1200px;
+      height: 1400px;
       margin: 0 auto;
     }
     &::after {
@@ -371,6 +375,9 @@ body {
       padding: $inner-margin;
       @include mq-lg {
         height: $body-height;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       }
       .demo-picBox {
         overflow: hidden;
@@ -378,14 +385,6 @@ body {
         align-items: center;
         position: relative;
         z-index: 10;
-        // &:last-of-type {
-        //   #demo-pic {
-        //     &:last-of-type {
-        //       opacity: 1;
-        //     }
-        //   }
-        // }
-
         button {
           border-radius: 50%;
           position: absolute;
@@ -416,6 +415,7 @@ body {
           flex-shrink: 0;
           position: relative;
           z-index: 5;
+        
           &:first-of-type {
             z-index: -1;
           }
@@ -436,8 +436,9 @@ body {
 
       p {
         font-size: 14px;
-        line-height: 18px;
         margin-bottom: $inner-margin;
+        letter-spacing: 2px;
+        line-height: 1.5;
       }
       img {
         display: block;
