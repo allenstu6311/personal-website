@@ -12,10 +12,10 @@
           <p>Front-end engineer</p>
         </div>
         <div class="card-btn_1">
-          <router-link to="/AboutView.vue">
+          <router-link to="/about">
             <button class="card-about">關於我</button>
           </router-link>
-          <router-link to="/Project.vue">
+          <router-link to="/project">
             <button class="card-project">作品集</button>
           </router-link>
         </div>
@@ -73,9 +73,9 @@ const show = ref(true);
   box-sizing: border-box;
 }
 .bgColor {
-  background: linear-gradient(90deg, $nightMainColor 40%, transparent 0%)
+  background: linear-gradient(180deg, white 30%, transparent 0%)
     left/100% !important;
-  background-color: $otherColor !important;
+  background-color: $otherColor  !important;
 }
 
 .introduceColor {
@@ -111,7 +111,7 @@ const show = ref(true);
     align-items: center;
     justify-content: center;
     margin-bottom: 50px;
-    margin-top: 100px;
+    padding-top: 150px;
     .home-name-card {
       width: 80%;
       height: 100%;
@@ -197,17 +197,23 @@ const show = ref(true);
 }
 
 @media screen and (min-width: 1024px) {
+  .bgColor {
+  background: linear-gradient(90deg, $nightMainColor 40%, transparent 0%)
+    left/100% !important;
+  background-color: $otherColor  !important;
+}
   .home-wrap {
     background: linear-gradient(90deg, $secondColor 40%, transparent 0%)
       left/100%;
-    margin-top: 80px;
-    padding: 150px 0;
+    padding-top: 200px;
+    padding-bottom: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     .home-container {
       width: 25%;
       margin: 0;
+      padding: 0;
       .home-name-card {
         width: 100%;
         border-radius: 0px;

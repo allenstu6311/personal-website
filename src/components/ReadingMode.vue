@@ -38,7 +38,7 @@ const count = computed(()=>{
 
 .switch-container {
 width: 80px;
-  position: fixed;
+  position: absolute;
   right: 5px;
   top: 20%;
   z-index: 11;
@@ -59,7 +59,7 @@ width: 80px;
     box-shadow: 0px 0px 10px rgb(217, 216, 216);
     background-color: white;
     border-radius: 20px;
-    position: fixed;
+    position: absolute;
     text-align: center;
     right: 5px;
     top: 20%;
