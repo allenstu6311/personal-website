@@ -1,21 +1,21 @@
 <template>
+
   <div class="home-wrap" :class="{ bgColor: count }">
     <div class="home-container">
       <div class="home-name-card" :class="{ cardColor: count }">
         <div class="card-pic">
           <img src="../assets/image/headpic.jpg" />
         </div>
-
         <div class="card-name">
           <h3>李俊彥</h3>
           <h3>Allen</h3>
           <p>Front-end engineer</p>
         </div>
         <div class="card-btn_1">
-          <router-link to="/about">
+          <router-link target="_blank" :to="{path:'/about',query:{boolean:`${store.state.viewsColor}`}}" >
             <button class="card-about">關於我</button>
           </router-link>
-          <router-link to="/project">
+          <router-link target="_blank" :to="{path:'/project',query:{boolean:`${store.state.viewsColor}`}}">
             <button class="card-project">作品集</button>
           </router-link>
         </div>
@@ -41,10 +41,10 @@
     <div class="home-introduce" :class="{ introduceColor: count }">
       <h1>HELLO</h1>
       <div class="card-btn_2">
-        <router-link to="/about">
+        <router-link  target="_blank" :to="{path:'/about',query:{boolean:`${store.state.viewsColor}`}}">
           <button class="card-about">關於我</button>
         </router-link>
-        <router-link to="/project">
+        <router-link  target="_blank" :to="{path:'/project',query:{boolean:`${store.state.viewsColor}`}}">
           <button class="card-project">作品集</button>
         </router-link>
       </div>
@@ -60,7 +60,15 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import { useStore } from "vuex";
+import {useRoute} from "vue-router"
 const store = useStore();
+const route = useRoute();
+if(route.query.boolean == 'true'){
+ 
+ store.commit('changeViewsColor',1)
+}else{
+ store.commit('changeViewsColor',0)
+}
 const count = computed(() => {
   return store.state.viewsColor;
 });

@@ -50,7 +50,15 @@
 <script setup>
 import { ref, reactive, computed } from "vue";
 import { useStore } from "vuex";
+import {useRoute} from "vue-router"
 const store = useStore();
+const route = useRoute();
+if(route.query.boolean == 'true'){
+ 
+ store.commit('changeViewsColor',1)
+}else{
+ store.commit('changeViewsColor',0)
+}
 const count = computed(() => {
   return store.state.viewsColor;
 });

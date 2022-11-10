@@ -7,9 +7,11 @@
     <transition name="headerShow" v-show="isShow">
       <nav :class="{bgColor:count}">
       <div class="header-url">
-        <router-link v-for="item in pageRoutes" 
+        <router-link 
+        target="_blank" 
+        v-for="item in pageRoutes" 
       :key="item" 
-      :to="item.path"
+      :to="{path:item.path,query:{boolean:`${store.state.viewsColor}`}}"
       @click="isShow=false"
       :class="{fontColor:count}"
       >{{ item.name}}</router-link> 

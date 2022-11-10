@@ -13,7 +13,10 @@ export default createStore({
       }else{
         state.viewsColor = true
       }
-    }
+    },
+    // getBoolean(state,num){
+    //   state.viewsColor = num
+    // }
   },
   actions: {
   

@@ -40,9 +40,15 @@
 <script setup>
 import{computed,ref}from"vue"
 import { useStore } from "vuex";
+import {useRoute} from "vue-router"
 const store = useStore();
+const route = useRoute();
 const count = computed(() => {
-  return store.state.viewsColor;
+  if(route.query.boolean){
+    return route.query.boolean
+  }else{
+    return store.state.viewsColor;
+  } 
 });
 
 </script>

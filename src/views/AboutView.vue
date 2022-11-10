@@ -152,7 +152,7 @@
 
 @mixin mq-sm {
   @media (min-width: 480px) {
-    @content;
+    @content;//引入後可以寫額外的東西
   }
 }
 
@@ -470,12 +470,20 @@ body {
 <script setup>
 import { ref, computed, reactive } from "vue";
 import { useStore } from "vuex";
+import {useRoute} from "vue-router"
 const store = useStore();
+const route = useRoute();
+if(route.query.boolean == 'true'){
+ 
+    store.commit('changeViewsColor',1)
+  }else{
+    store.commit('changeViewsColor',0)
+  }
 const count = computed(() => {
-  return store.state.viewsColor;
+    return store.state.viewsColor;
 });
-const clickBtn = ref(true);
 
+const clickBtn = ref(true);
 
 const setTime = () => {
   setTimeout(() => {
